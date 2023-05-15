@@ -10,9 +10,9 @@ async function sendResponse(input) {
         temperature: 0.7
     }
 
-    console.log('Prompt: ',input)
+    console.log('Prompt: \n ',input)
     data.messages[0].content = input
-    
+
     const config = {
         headers: {
             'Content-Type': "application/json",
@@ -23,7 +23,7 @@ async function sendResponse(input) {
     const response = await axios.post(API_URL, data, config)
     const choices = response.data.choices[0]
     const text = choices.message.content
-    console.log('Response: ',text)
+    console.log('Response: \n',text)
     return text
 }
 

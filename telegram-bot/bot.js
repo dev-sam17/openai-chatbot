@@ -25,7 +25,7 @@ bot.on('message', async (msg) => {
   const chatId = msg.chat.id;
   try {
     if(msg.text === '/start' || msg.text === '/sayhello') {
-        bot.sendMessage(chatId, 'Welcome to the ChatGPT telegram bot!');
+        bot.sendMessage(chatId, `Hey, ${msg.from.first_name}. Welcome to the ChatGPT telegram bot!`);
       } else {
         const resp = await sendResponse(msg.text);
       // send a message to the chat acknowledging receipt of their message
@@ -34,6 +34,11 @@ bot.on('message', async (msg) => {
   } catch (error) {
     bot.sendMessage(chatId, "Something unpected happened. Please try after sometime.");
   }
-  
-  
 });
+
+bot.on('edited_message', async (msg) => {
+    const chatId = msg.chat.id;
+    console.log(msg);
+    const resp = await sendResponse(msg.text)
+    bot.sendMessage(chatId, resp);
+})
