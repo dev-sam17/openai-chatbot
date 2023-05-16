@@ -23,6 +23,7 @@ bot.onText(/\/echo (.+)/, (msg, match) => {
 // messages.
 bot.on('message', async (msg) => {
   const chatId = msg.chat.id;
+  console.log(`Prompt from ${msg.from.first_name}: ${msg.text}`)
   try {
     if(msg.text === '/start' || msg.text === '/sayhello') {
         bot.sendMessage(chatId, `Hey, ${msg.from.first_name}. Welcome to the ChatGPT telegram bot!`);
@@ -38,7 +39,7 @@ bot.on('message', async (msg) => {
 
 bot.on('edited_message', async (msg) => {
     const chatId = msg.chat.id;
-    console.log(msg);
+    // console.log(msg);
     const resp = await sendResponse(msg.text)
     bot.sendMessage(chatId, resp);
 })

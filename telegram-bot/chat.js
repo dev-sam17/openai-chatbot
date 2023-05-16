@@ -10,7 +10,6 @@ async function sendResponse(input) {
         temperature: 0.7
     }
 
-    console.log('Prompt: \n ',input)
     data.messages[0].content = input
 
     const config = {
