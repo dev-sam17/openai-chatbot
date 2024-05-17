@@ -1,3 +1,4 @@
+```
 ##
         var copy = function(target) {
     var textArea = document.createElement('textarea')
@@ -8,3 +9,4 @@
     document.execCommand('copy')
     document.body.removeChild(textArea)
 }
+```
